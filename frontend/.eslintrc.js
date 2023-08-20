@@ -13,6 +13,7 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'object-curly-newline': 'off',
     'react/prop-types': 'off',
     'react/jsx-filename-extension': 'off',
     'react/react-in-jsx-scope': 'off',
