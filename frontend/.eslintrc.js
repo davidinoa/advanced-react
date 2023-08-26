@@ -13,6 +13,8 @@ module.exports = {
   },
   plugins: ['react'],
   rules: {
+    'import/no-named-as-default': 'off',
+    'import/no-named-as-default-member': 'off',
     'object-curly-newline': 'off',
     'react/prop-types': 'off',
     'react/jsx-filename-extension': 'off',
