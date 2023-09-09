@@ -1,9 +1,9 @@
-import { useMutation } from "@apollo/client";
-import gql from "graphql-tag";
-import useForm from "../lib/useForm";
-import DisplayError from "./ErrorMessage";
-import Form from "./styles/Form";
-import { ALL_PRODUCTS_QUERY } from "./Products";
+import { useMutation } from '@apollo/client';
+import gql from 'graphql-tag';
+import useForm from '../lib/useForm';
+import DisplayError from './ErrorMessage';
+import Form from './styles/Form';
+import { ALL_PRODUCTS_QUERY } from './Products';
 
 const CREATE_PRODUCT_MUTATION = gql`
   mutation CREATE_PRODUCT_MUTATION(
@@ -30,26 +30,25 @@ const CREATE_PRODUCT_MUTATION = gql`
 `;
 
 export default function CreateProduct() {
-  const { inputs, handleChange, clearForm, resetForm } = useForm({
-    image: "",
-    name: "Nice Shoes",
+  const { inputs, handleChange, clearForm } = useForm({
+    image: '',
+    name: 'Nice Shoes',
     price: 34234,
-    description: "These are the best shoes!",
+    description: 'These are the best shoes!',
   });
 
-  const [createProduct, { loading, error, data }] = useMutation(
+  const [createProduct, { loading, error }] = useMutation(
     CREATE_PRODUCT_MUTATION,
     {
       variables: inputs,
       refetchQueries: [{ ALL_PRODUCTS_QUERY }],
-    }
+    },
   );
 
   return (
     <Form
       onSubmit={async (e) => {
         e.preventDefault();
-        console.log(inputs);
         await createProduct();
         clearForm();
       }}
